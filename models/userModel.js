@@ -3,6 +3,11 @@ module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     "user",
     {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+      },
       email: {
         type: DataTypes.STRING,
         unique: true,
@@ -26,6 +31,10 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: [],
         comment:
           "List of causes the user supports (e.g., environmental, education, healthcare)",
+      },
+      refreshToken: {
+        type: DataTypes.STRING,
+        allowNull: true,
       },
     },
     { timestamps: true }
