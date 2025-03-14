@@ -7,6 +7,10 @@ const db = require("./models");
 const errorHandler = require("./middlewares/globalErrHandler");
 // Importing the routes
 const authRoutes = require("./routes/authRoutes");
+const eventRoutes = require("./routes/eventRoutes");
+const helpRequestRoutes = require("./routes/helpRequestRoutes");
+const teamRoutes = require("./routes/teamRoutes");
+const impactRoutes = require("./routes/impactRoutes");
 
 const app = express();
 app.use(express.json());
@@ -16,7 +20,12 @@ db.sequelize.sync().then(() => {
   console.log("db has been re sync");
 });
 
+// API Routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/events", eventRoutes);
+app.use("/api/v1/help-requests", helpRequestRoutes);
+app.use("/api/v1/teams", teamRoutes);
+app.use("/api/v1/impact", impactRoutes);
 
 app.use(errorHandler);
 

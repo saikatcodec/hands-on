@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const appError = require("../utils/appError");
 const User = require("../models").users;
 
-const protect = async (req, res, next) => {
+const authenticateUser = async (req, res, next) => {
   try {
     // 1) Check if token exists
     let token;
@@ -48,4 +48,4 @@ const protect = async (req, res, next) => {
   }
 };
 
-module.exports = { protect };
+module.exports = { authenticateUser };
